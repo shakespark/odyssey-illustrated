@@ -65,7 +65,7 @@
       h("div", { class: "kicker" }, p.ch === 0 ? "PREFACE" : `CHAPTER ${p.ch} / 12 · ${b.en.toUpperCase()}`),
       h("h1", {}, p.ch === 0 ? p.t : `${label(p)}　${p.t}`),
       h("div", { class: "badges" }, ...badges(p), b.age && !p.part ? h("span", { class: "badge" }, b.age) : null)),
-      p.ch ? lifeline(p.ch) : null);
+      ...(p.ch ? [lifeline(p.ch)] : []));
     const prev = PAGES[i - 1], next = PAGES[i + 1];
     const done = h("button", { class: "btn" });
     const paint = () => { done.textContent = isDone(id) ? "✓ 已读完这一页对应的部分" : "标记：这一部分读完了"; done.setAttribute("aria-pressed", isDone(id)); };
